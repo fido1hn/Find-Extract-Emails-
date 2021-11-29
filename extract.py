@@ -1,19 +1,19 @@
-domains = ['bellsouth.net', 'att.net', 'sbcglobal.net']
+domains = ['yahoo.com', 'gmail.com', 'outlook.com'] #Domains that you want to extract from the file 
 
-emaillist = open('CoinMarketCap 3.1M.txt', 'r') #open the email list
+emaillist = open('10kmixedemaillist', 'r') #open your email list in read mode
 
-newlist = open('extractedemails', 'a') #open the new list 
+newlist = open('extractedemails', 'a') #open the new list in append mode
 
 """
-print(emaillist.readline())
-print(emaillist.readline())
+print(emaillist.readline())	#This was for debugging
+print(emaillist.readline())	#More debugging
 """
 
-for line in emaillist:  #iterate through and split check and save to the new list 
-	prop = line.strip().split('@')
-	if prop[1] in domains:
-		#print(line)
-		newlist.write(line)
+for line in emaillist:  #iterate through the file
+	prop = line.strip().split('@')		#Strip the line of space and split it
+	if prop[1] in domains:			#check if domain is in our list 
+		#print(line)			#Debugging
+		newlist.write(line)		#Add to new file
 
-newlist.close()
-print('Done')
+newlist.close()					#Close the file
+print('Done')					#Give us feedback
